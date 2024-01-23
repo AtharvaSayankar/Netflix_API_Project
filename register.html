@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New User</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="https://about.netflix.com/images/meta/netflix-symbol-black.png" type="image/icon type">
+    <script>
+        const date = new Date();
+        document.getElementById("date").innerHTML = date;
+    </script>
+</head>
+<body>
+    <div style="text-align: center; color: white; margin-top: 50px; font-size: larger;">
+        <p>New User</p>
+        <form action="" method="post">
+            <input class="btn" id="Username" name="Username" type="text" placeholder="Username"><br><br> 
+            <input class="btn" id="email" name="email" type="email" placeholder="email"><br><br> 
+            <input  class="btn" id="Password" name="Password" type="text" placeholder="Set Password"><br><br> 
+            <input  class="btn" id="AgainPassword" type="password" placeholder="Type Password Again"><br><br>
+            <input  class="btn" id="DOB" name="DOB" type="date" placeholder="DOB"><br><br>
+            <button class="btn" id="sub" type="submit" onclick="alert('Registered!')">Submit Info</button>
+        </form>
+
+    </div>
+    <script>
+        let form = document.querySelector("form");
+        // The document.querySelector() method returns the first element that matches a specified CSS selector.
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // The preventDefault() method stops the form from submitting and prevents the page from refreshing.
+            document.querySelector("#sub").value = "Submiting..";
+            // Change the value of the submit button to "Submitting..." while the form is being submitted.
+            let data = new FormData(form);
+            // The FormData() method creates a new FormData object that contains the values of all the form fields.
+            fetch('Paste_Your_Api_EndPoint_Url', {
+                    method: "POST",
+                    body: data
+                })
+                // The fetch() method is used to make a request to the server and retrieve data.
+                // This is an example API endpoint. Replace it with the actual URL for the API endpoint you want to use.
+                .then(res => res.text())
+                // The .then() method is used to handle the response from the server.
+                // The response is converted to text using the res.text() method.
+                .then(data => {
+                    document.querySelector("#msg").innerHTML = data;
+                    // The innerHTML property sets or returns the HTML content of an element.
+                    // Here, we are setting the content of the <h1> element to the response from the server.
+                    document.querySelector("#sub").value = "Submit"
+                    // Change the value of the submit button back to "Submit" after the form has been submitted.
+                });
+        })
+    </script>
+</body>
+</html>

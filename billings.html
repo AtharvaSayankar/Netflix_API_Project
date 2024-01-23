@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billings</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="https://about.netflix.com/images/meta/netflix-symbol-black.png" type="image/icon type">
+    
+</head>
+<body>
+    <div style="text-align: center; color: white; margin-top: 50px; font-size: larger;">
+        <img src="./images/user.png" id="profile-pic" style="border-radius: 100%; width: 250px; height: 250px;">
+        <!-- <input type="file" class="btn" id="inputfile" accept="image/png, image/jpg, image/jpeg" style="color: red; text-decoration: none;"> -->
+        <p>UserName: AtharvaBoy</p>
+        <p>email ID: AtharvaBoy@gmail.com</p>
+        <p>Age: 21</p>
+        <p id="d" class="date" style="color: aliceblue;"></p>
+        <p><a href="./profile.html" style="color: red; text-decoration: none;" id="back">Back to Profile</a></p>
+    </div>
+    <script>
+        const today = new Date();        
+        
+        if(today.getDate() == "30" && "31" ){
+            document.getElementById("d").innerHTML = today.getDate()+" (Subscription Ended)";
+        }
+        else{
+            document.getElementById("d").innerHTML = "Date of the month: "+today.getDate()+" (Subscription Not Due yet)";
+        }
+    </script>
+</body>
+</html>
